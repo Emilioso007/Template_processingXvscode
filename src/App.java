@@ -1,4 +1,3 @@
-//test1
 
 import ScreenClasses.ScreenManager;
 import ScreenClasses.Screens.StartMenu;
@@ -6,6 +5,7 @@ import Utils.KH;
 import Utils.MH;
 import processing.core.*;
 import processing.event.MouseEvent;
+
 
 public class App extends PApplet {
 
@@ -23,6 +23,11 @@ public class App extends PApplet {
         MH.initialize(this);
         ScreenManager.initialize(this);
         ScreenManager.setScreen(new StartMenu());
+
+        
+
+
+        
     }
 
     public void draw() {

@@ -13,10 +13,6 @@ public class Button extends AABB {
 
     public ButtonAction action;
 
-    public boolean isClicked = false, isHeld = false;
-    private boolean isHovered = false;
-    private boolean a = false, b = true;
-
     private Color idleColor, hoveColor, clickColor, currentColor;
 
     public String text;
@@ -35,35 +31,12 @@ public class Button extends AABB {
     }
 
     public void update() {
-        b = !a;
 
-        if (this.contains(MH.mouseX, MH.mouseY)) {
-            isHovered = true;
-        } else {
-            isHovered = false;
-        }
-
-        if (isHovered && MH.leftPressed) {
-            isHeld = true;
-            a = true;
-        } else {
-            isHeld = false;
-            a = false;
-        }
-
-        if (a && b) {
-            isClicked = true;
-        } else {
-            isClicked = false;
-        }
-
-        if (isClicked) {
+        if (isClicked()) {
             action.run();
-        }
-
-        if (isHeld) {
+        } else if (isHeld()) {
             currentColor = Color.lerp(currentColor, clickColor, 0.5f);
-        } else if (isHovered) {
+        } else if (contains(MH.mouseX, MH.mouseY)) {
             currentColor = Color.lerp(currentColor, hoveColor, 0.2f);
         } else {
             currentColor = Color.lerp(currentColor, idleColor, 0.2f);
@@ -75,7 +48,6 @@ public class Button extends AABB {
         if (!render) {
             return;
         }
-
 
         p.stroke(0);
         p.fill(currentColor.c);

@@ -1,10 +1,14 @@
 package LogicClasses.Shapes;
 
+import ScreenClasses.ScreenManager;
+import Utils.MH;
+
 public class AABB {
 
     public float x, y, w, h;
 
     public AABB(float x, float y, float w, float h) {
+        super();
         this.x = x;
         this.y = y;
         this.w = w;
@@ -47,6 +51,41 @@ public class AABB {
         float cornerDistance_sq = (float) (Math.pow(distanceX - w / 2, 2) + Math.pow(distanceY - h / 2, 2));
 
         return (cornerDistance_sq <= Math.pow(other.r, 2));
+    }
+
+    public boolean isClicked(){
+        
+        return (contains(ScreenManager.p.mouseX, ScreenManager.p.mouseY) && MH.leftClicked);
+
+    }
+
+    public boolean isRigthClicked(){
+        
+        return (contains(ScreenManager.p.mouseX, ScreenManager.p.mouseY) && MH.rightClicked);
+
+    }
+
+    public boolean isHeld(){
+        
+        return (contains(ScreenManager.p.mouseX, ScreenManager.p.mouseY) && MH.leftPressed);
+
+    }
+
+    //getters
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public float getW() {
+        return w;
+    }
+
+    public float getH() {
+        return h;
     }
 
 }
