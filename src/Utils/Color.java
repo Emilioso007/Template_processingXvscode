@@ -127,7 +127,7 @@ public class Color {
         return a;
     }
 
-    // funtions
+    // functions
     public static Color lerp(Color a, Color b, float t) {
         return new Color(
                 (int) PApplet.lerp(a.r, b.r, t),
