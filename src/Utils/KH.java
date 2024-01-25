@@ -93,8 +93,6 @@ public class KH {
 
                         keyMap.put(keyName, keyCode);
 
-                        System.out.println("Added key: " + keyName + " with code: " + keyCode);
-
                     } catch (NumberFormatException e) {
                         System.err.println("Invalid key code: " + parts[1]);
                     }
